@@ -12,6 +12,23 @@ document.getElementById('upload-form').addEventListener('submit', function(event
     analyzeImage(activityType, imageFile);
 });
 
+/**
+     * Analyzes an image based on the specified activity type and displays the result.
+     *
+     * This function updates the content of a designated HTML element to indicate that
+     * the analysis is in progress and simulates a delay before displaying the result.
+     * After the analysis is complete, it calls the `render3DModel` function to visualize
+     * the results.
+     *
+     * @param {string} activityType - The type of activity being analyzed (e.g., construction, renovation).
+     * @param {File} imageFile - The image file to be analyzed.
+     *
+     * @throws {Error} Throws an error if the `resultDiv` element is not found in the document.
+     *
+     * @example
+     * // Example usage:
+     * analyzeImage('construction', myImageFile);
+     */
 function analyzeImage(activityType, imageFile) {
     const resultDiv = document.getElementById('result');
     resultDiv.innerHTML = `Analyzing the ${activityType}...`;
@@ -22,6 +39,18 @@ function analyzeImage(activityType, imageFile) {
     }, 2000); // Simulated delay
 }
 
+/**
+     * Initializes and renders a 3D model using the Three.js library.
+     * This function sets up a WebGL renderer, creates a scene with a rotating cube,
+     * and continuously renders the scene to the specified canvas element.
+     *
+     * @function render3DModel
+     * @throws {Error} Throws an error if the canvas element with id '3d-model' is not found.
+     * 
+     * @example
+     * // Call this function to start rendering the 3D model
+     * render3DModel();
+     */
 function render3DModel() {
     const canvas = document.getElementById('3d-model');
     const renderer = new THREE.WebGLRenderer({ canvas });
